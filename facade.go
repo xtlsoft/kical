@@ -1,0 +1,5 @@
+package kical
+
+func init() {
+
+}
