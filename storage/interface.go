@@ -20,7 +20,7 @@ type Storage interface {
 	Get(key []byte) ([]byte, error)
 	Set(key []byte, value []byte, options *SetOptions) error
 	NewIter(start []byte, stop []byte) Iterator
-	NewBatch(typ BatchType) Batch
+	// NewBatch(typ BatchType) Batch
 }
 
 // Batch provides a method to execute a bunch of commands
