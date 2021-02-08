@@ -20,7 +20,7 @@ type Storage interface {
 	Get(key []byte) ([]byte, error)
 	Set(key []byte, value []byte, options *SetOptions) error
 	NewIter(start []byte, stop []byte) Iterator
-	// NewBatch(typ BatchType) Batch
+	NewBatch(typ BatchType) Batch
 }
 
 // Batch provides a method to execute a bunch of commands
@@ -28,6 +28,7 @@ type Batch interface {
 	Get(key []byte) ([]byte, error)
 	Set(key []byte, value []byte, options *SetOptions) error
 	NewIter(start []byte, stop []byte) Iterator
+	Commit() error
 }
 
 // SetOptions provide an interface for users
@@ -38,4 +39,12 @@ type SetOptions struct {
 
 // Iterator is an iterable data structure
 type Iterator interface {
+	First() bool
+	Last() bool
+	Next() bool
+	Prev() bool
+	SeekGE(m []byte) bool
+	SeekLT(m []byte) bool
+	Valid() bool
+	Value() []byte
 }
