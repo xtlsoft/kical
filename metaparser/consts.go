@@ -31,7 +31,8 @@ const (
 
 // Metadata Storage Type
 const (
-	MetaStorageTypeRowDocument = 'a'
-	MetaStorageTypeColumn      = 'b'
-	MetaStorageTypeAnalytical  = 'c'
+	MetaStorageTypeKV          = 'a'
+	MetaStorageTypeRowDocument = 'b'
+	MetaStorageTypeColumn      = 'c'
+	MetaStorageTypeAnalytical  = 'd'
 )
