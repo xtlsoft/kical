@@ -3,36 +3,36 @@
 package metaparser
 
 // MetaInitCharacter as is
-const MetaInitCharacter = '&'
+const MetaInitCharacter = byte('&')
 
 // Metadata Second Character Enum
 const (
-	MetaTypeStorageType = ':'
-	MetaTypeExtended    = '!'
-	MetaTypeKeys        = '|'
-	MetaTypeTableName   = '@'
-	MetaTypePrimaryKey  = '*'
+	MetaTypeStorageType = byte(':')
+	MetaTypeExtended    = byte('!')
+	MetaTypeKeys        = byte('|')
+	MetaTypeTableName   = byte('@')
+	MetaTypePrimaryKey  = byte('*')
 )
 
 // MetaKeysSeparator as is
-const MetaKeysSeparator = '|'
+const MetaKeysSeparator = byte('|')
 
 // Metadata Extended Enum
 const (
-	MetaTypeExtendedK = 'k'
+	MetaTypeExtendedK = byte('k')
 )
 
 // Metadata Primary Key Type
 const (
-	MetaPrimaryKeyAutoIncrementID = '0'
-	MetaPrimaryKeyUUID            = '1'
-	MetaPrimaryKeyCustom          = '2'
+	MetaPrimaryKeyAutoIncrementID = byte('0')
+	MetaPrimaryKeyUUID            = byte('1')
+	MetaPrimaryKeyCustom          = byte('2')
 )
 
 // Metadata Storage Type
 const (
-	MetaStorageTypeKV          = 'a'
-	MetaStorageTypeRowDocument = 'b'
-	MetaStorageTypeColumn      = 'c'
-	MetaStorageTypeAnalytical  = 'd'
+	MetaStorageTypeKV          = byte('a')
+	MetaStorageTypeRowDocument = byte('b')
+	MetaStorageTypeColumn      = byte('c')
+	MetaStorageTypeAnalytical  = byte('d')
 )

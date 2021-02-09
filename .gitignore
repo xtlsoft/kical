@@ -15,5 +15,5 @@
 # vendor/
 
 /dist/
-/dev-test/
+/dev-test*/
 /testdb/

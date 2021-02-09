@@ -208,6 +208,9 @@ func (pds *PebbleDriverStorage) Get(key []byte) ([]byte, error) {
 	dat, closer, err := pds.db.Get(key)
 	defer closer.Close()
 	if err != nil {
+		if err == pebble.ErrNotFound {
+			return nil, ErrNoSuchKey
+		}
 		return nil, err
 	}
 	return dat, nil
