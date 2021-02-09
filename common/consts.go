@@ -1,4 +1,5 @@
-package kical
+// Package common provides common things
+package common
 
 // Type Enum
 const (

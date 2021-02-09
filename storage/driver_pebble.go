@@ -206,18 +206,21 @@ func (pds *PebbleDriverStorage) GetDB() *pebble.DB {
 // Get gets an entry from the DB
 func (pds *PebbleDriverStorage) Get(key []byte) ([]byte, error) {
 	dat, closer, err := pds.db.Get(key)
-	defer closer.Close()
 	if err != nil {
 		if err == pebble.ErrNotFound {
 			return nil, ErrNoSuchKey
 		}
 		return nil, err
 	}
+	closer.Close()
 	return dat, nil
 }
 
 // Set puts an entry to the DB
 func (pds *PebbleDriverStorage) Set(key []byte, value []byte, options *SetOptions) error {
+	if options == nil {
+		options = &SetOptions{}
+	}
 	return pds.db.Set(key, value, &pebble.WriteOptions{
 		Sync: options.Synchronized,
 	})
