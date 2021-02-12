@@ -3,6 +3,10 @@
 package kv
 
 const (
-	keyInitialCharacter  = '='
-	metaInitialCharacter = '_'
+	keyInitialCharacter  = byte('=')
+	metaInitialCharacter = byte('_')
+)
+
+var (
+	keyInitialCharacterBytes = []byte{keyInitialCharacter}
 )
