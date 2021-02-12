@@ -19,6 +19,8 @@ type Driver interface {
 type Storage interface {
 	Get(key []byte) ([]byte, error)
 	Set(key []byte, value []byte, options *SetOptions) error
+	Delete(key []byte) error
+	DeleteRange(start []byte, end []byte) error
 	NewIter(start []byte, stop []byte) Iterator
 	NewBatch(typ BatchType) Batch
 }
@@ -27,6 +29,8 @@ type Storage interface {
 type Batch interface {
 	Get(key []byte) ([]byte, error)
 	Set(key []byte, value []byte, options *SetOptions) error
+	Delete(key []byte) error
+	DeleteRange(start []byte, end []byte) error
 	NewIter(start []byte, stop []byte) Iterator
 	Commit() error
 }
@@ -47,4 +51,5 @@ type Iterator interface {
 	SeekLT(m []byte) bool
 	Valid() bool
 	Value() []byte
+	Key() []byte
 }

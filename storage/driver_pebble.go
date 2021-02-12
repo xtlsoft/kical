@@ -226,6 +226,16 @@ func (pds *PebbleDriverStorage) Set(key []byte, value []byte, options *SetOption
 	})
 }
 
+// Delete deletes an entry in the DB
+func (pds *PebbleDriverStorage) Delete(key []byte) error {
+	return pds.db.Delete(key, nil)
+}
+
+// DeleteRange deletes a set of entries in the DB
+func (pds *PebbleDriverStorage) DeleteRange(start []byte, end []byte) error {
+	return pds.db.DeleteRange(start, end, nil)
+}
+
 // NewIter creates a new iterator
 func (pds *PebbleDriverStorage) NewIter(start []byte, stop []byte) Iterator {
 	iter := pds.db.NewIter(&pebble.IterOptions{
@@ -275,6 +285,16 @@ func (pdb *PebbleDriverBatch) Set(key []byte, value []byte, options *SetOptions)
 	})
 }
 
+// Delete deletes an entry in the DB
+func (pdb *PebbleDriverBatch) Delete(key []byte) error {
+	return pdb.batch.Delete(key, nil)
+}
+
+// DeleteRange deletes a set of entries in the DB
+func (pdb *PebbleDriverBatch) DeleteRange(start []byte, end []byte) error {
+	return pdb.batch.DeleteRange(start, end, nil)
+}
+
 // NewIter creates a new iterator
 func (pdb *PebbleDriverBatch) NewIter(start []byte, stop []byte) Iterator {
 	iter := pdb.batch.NewIter(&pebble.IterOptions{
@@ -314,6 +334,11 @@ func (pdi *PebbleDriverIterator) Valid() bool {
 // Value as is
 func (pdi *PebbleDriverIterator) Value() []byte {
 	return pdi.it.Value()
+}
+
+// Key returns current key
+func (pdi *PebbleDriverIterator) Key() []byte {
+	return pdi.it.Key()
 }
 
 // Last as is
