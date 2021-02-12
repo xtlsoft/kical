@@ -12,6 +12,7 @@ Kical is a quick and associative query toolset suitable for small datasets in lo
 - Kical provides accelerated query performance on small datasets
 - Kical sacrifices memory to provide better performance
 - Kical can provide dataset in 'chunks'
+- Kical is suitable for apiles/unikv, so it can be used as a backend for UniKVd
 
 ## Applications
 
