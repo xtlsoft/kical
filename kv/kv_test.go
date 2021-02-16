@@ -14,8 +14,10 @@ func BenchmarkGet(b *testing.B) {
 	})
 	db, _ := kical.NewDatabase(drv, nil)
 	bkt, _ := drv.Bucket("test")
-	bkt.Set([]byte("&:"), []byte("a"), nil)
-	bkt.Set([]byte("=a"), []byte(""), nil)
+	bt := bkt.NewBatch(storage.BatchReadWrite)
+	bt.Set([]byte("&:"), []byte("a"), nil)
+	bt.Set([]byte("=a"), []byte(""), nil)
+	bt.Commit()
 	tbl, _ := db.Table("test")
 	kv, _ := tbl.GetKV()
 	_ = kv

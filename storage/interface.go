@@ -4,8 +4,8 @@ package storage
 type BatchType uint8
 
 const (
-	// BatchReadOnly as is
-	BatchReadOnly = BatchType(1)
+	// BatchWriteOnly as is
+	BatchWriteOnly = BatchType(1)
 	// BatchReadWrite as is
 	BatchReadWrite = BatchType(2)
 )
@@ -18,9 +18,9 @@ type Driver interface {
 // Storage is the driver storage class interface
 type Storage interface {
 	Get(key []byte) ([]byte, error)
-	Set(key []byte, value []byte, options *SetOptions) error
-	Delete(key []byte) error
-	DeleteRange(start []byte, end []byte) error
+	// Set(key []byte, value []byte, options *SetOptions) error
+	// Delete(key []byte) error
+	// DeleteRange(start []byte, end []byte) error
 	NewIter(start []byte, stop []byte) Iterator
 	NewBatch(typ BatchType) Batch
 }

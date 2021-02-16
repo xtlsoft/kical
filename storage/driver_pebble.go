@@ -250,7 +250,7 @@ func (pds *PebbleDriverStorage) NewIter(start []byte, stop []byte) Iterator {
 // NewBatch creates a new batch
 func (pds *PebbleDriverStorage) NewBatch(typ BatchType) Batch {
 	switch typ {
-	case BatchReadOnly:
+	case BatchWriteOnly:
 		return &PebbleDriverBatch{
 			batch: pds.db.NewBatch(),
 		}
